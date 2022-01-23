@@ -40,6 +40,9 @@
     ## 下载镜像
     cd ./master
     sh ./pull_master_image.sh
+    docker images[这里coredns镜像要单独打个tag]
+    docker tag k8s.gcr.io/coredns:v1.8.6 k8s.gcr.io/coredns/coredns:v1.8.6
+    docker rmi k8s.gcr.io/coredns:v1.8.6
 
 
     ## 将桥接的IPv4流量传递到iptables的链
