@@ -79,7 +79,7 @@
     kubeadm join xxxxxxxxxx --token xxxxxxxxxx --discovery-token-ca-cert-hash sha256:xxxxxxxxxx
 
 
-    ## 创建集群配置文件[node节点可以操作master]
+    ## 创建集群配置文件[可选操作-node节点可以访问master]
     mkdir -p $HOME/.kube
     ## 将master节点/etc/kubernetes/admin.conf文件复制一份到node2
     在master节点执行 scp /etc/kubernetes/admin.conf root@node2节点IP:/root/.kube/config
