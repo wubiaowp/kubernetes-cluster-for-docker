@@ -82,7 +82,7 @@
     ## 创建集群配置文件[node节点可以操作master]
     mkdir -p $HOME/.kube
     ## 将master节点/etc/kubernetes/admin.conf文件复制一份到node2
-    在master节点执行 scp /etc/kubernetes/admin.conf root@node1节点IP:/root/.kube/config
+    在master节点执行 scp /etc/kubernetes/admin.conf root@node2节点IP:/root/.kube/config
     chown $(id -u):$(id -g) $HOME/.kube/config
 
     ## 查看节点状态
