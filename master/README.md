@@ -93,6 +93,10 @@
     kubectl get nodes
 
 
+    ## 修改标签名称
+    kubectl label node kubernetes-node1 node-role.kubernetes.io/node1=node1
+    kubectl label node kubernetes-node2 node-role.kubernetes.io/node2=node2
+
     ## 部署flannel
     vim /etc/hosts 添加 185.199.110.133  raw.githubusercontent.com
     wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml

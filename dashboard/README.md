@@ -14,13 +14,13 @@
       name: kubernetes-dashboard
       namespace: kubernetes-dashboard
     spec:
-    type: NodePort ## 添加
-    ports:
-      - port: 443
-        targetPort: 8443
-        nodePort: 30001 ## 添加
-    selector:
-      k8s-app: kubernetes-dashboard
+      type: NodePort ## 添加
+      ports:
+        - port: 443
+          targetPort: 8443
+          nodePort: 30001 ## 添加
+      selector:
+        k8s-app: kubernetes-dashboard
 
 
     3、执行创建服务
