@@ -100,7 +100,7 @@
     kubectl apply -f kube-flannel.yml
     
     
-    ##修改标签名称【可选操作-集群部署完成之后操作】
+    ##修改标签名称[可选操作-集群部署完成之后操作]
     kubectl label node kubernetes-node1 node-role.kubernetes.io/node1=node1
     kubectl label node kubernetes-node2 node-role.kubernetes.io/node2=node2
     
