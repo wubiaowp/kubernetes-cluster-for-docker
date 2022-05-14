@@ -38,8 +38,9 @@
 
 
     ## 下载镜像
-    cd ./master
-    sh ./pull_master_image.sh
+    将本地项目master目录的镜像脚本上传到maste节点：scp pull_master_image.sh root@masterIP:/opt/images/
+    cd /opt/images/
+    sh pull_master_image.sh
     docker images[这里coredns镜像要单独打个tag]
     docker tag k8s.gcr.io/coredns:v1.8.6 k8s.gcr.io/coredns/coredns:v1.8.6
     docker rmi k8s.gcr.io/coredns:v1.8.6
@@ -80,7 +81,7 @@
 
     ## master节点初始化
     kubeadm init --kubernetes-version=v1.23.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12
-    直至底部出现 kubeadm join xxxxxxxxxx --token xxxxxxxxxx --discovery-token-ca-cert-hash sha256:xxxxxxxxxx表示成功[保存该文件]
+    直至底部出现【保存下来后面在node节点执行】 kubeadm join xxxxxxxxxx --token xxxxxxxxxx --discovery-token-ca-cert-hash sha256:xxxxxxxxxx表示成功[保存该文件]
 
 
     ## 创建集群配置文件
@@ -91,13 +92,15 @@
 
     ## 查看节点状态[NotReady]
     kubectl get nodes
-
-
-    ## 修改标签名称
-    kubectl label node kubernetes-node1 node-role.kubernetes.io/node1=node1
-    kubectl label node kubernetes-node2 node-role.kubernetes.io/node2=node2
+    
 
     ## 部署flannel
     vim /etc/hosts 添加 185.199.110.133  raw.githubusercontent.com
     wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
     kubectl apply -f kube-flannel.yml
+    
+    
+    ##修改标签名称【可选操作-集群部署完成之后操作】
+    kubectl label node kubernetes-node1 node-role.kubernetes.io/node1=node1
+    kubectl label node kubernetes-node2 node-role.kubernetes.io/node2=node2
+    
