@@ -38,8 +38,9 @@
 
 
     ## 下载镜像
-    cd ./node1
-    sh ./pull_node1_image.sh
+    将本地项目node1目录的镜像脚本上传到node1节点：scp pull_master_image.sh root@node1IP:/opt/images/
+    cd /opt/images/
+    sh pull_node1_image.sh
 
 
     ## 将桥接的IPv4流量传递到iptables的链
@@ -85,6 +86,6 @@
     在master节点执行 scp /etc/kubernetes/admin.conf root@node1节点IP:/root/.kube/config
     chown $(id -u):$(id -g) $HOME/.kube/config
 
-    ## 查看节点状态
+    ## 查看节点状态[可选操作]
     kubectl get nodes
 
