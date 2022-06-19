@@ -61,7 +61,7 @@
     baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
     enabled=1
     gpgcheck=1
-    repo_gpgcheck=1
+    repo_gpgcheck=0 
     gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
            https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg 
     EOF
@@ -78,6 +78,8 @@
     ## 设置主机名
     hostnamectl set-hostname kubernetes-master
 
+    ## 设置网络插件
+    echo "1" >/proc/sys/net/bridge/bridge-nf-call-iptables
 
     ## master节点初始化
     kubeadm init --kubernetes-version=v1.23.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12
